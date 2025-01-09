@@ -34,14 +34,21 @@ export default function CardForm() {
     const apiKey = watch("apiKey");
 
     useEffect(() => {
-        if (apiKey) {
-            listModels(apiKey)
-                .then(setModels)
-                .catch(console.error);
-        }
+        const fetchModels = async () => {
+            if (apiKey) {
+                try {
+                    const modelList = await listModels(apiKey);
+                    setModels(modelList);
+                } catch (error) {
+                    console.error('Error al cargar los modelos:', error);
+                }
+            }
+        };
+
+        fetchModels();
     }, [apiKey]);
 
-    const onSubmit = (data: TranslationFormData) => {
+    const onSubmit = async (data: TranslationFormData) => {
         console.log(data);
     };
 
