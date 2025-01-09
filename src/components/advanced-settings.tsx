@@ -32,12 +32,14 @@ export function AdvancedSettings({ control, errors }: AdvancedSettingsProps) {
                     <Controller
                         name="systemMessage"
                         control={control}
+                        defaultValue=""
                         render={({ field }) => (
                             <Input
                                 {...field}
+                                value={field.value || ""}
                                 type="text"
                                 label="Mensaje del sistema"
-                                placeholder="Ingresa el mensaje del sistema"
+                                placeholder="Convertí el mensaje en un mensaje corporativo y políticamente correcto."
                                 className="max-w-md"
                                 isInvalid={!!errors.systemMessage}
                                 errorMessage={errors.systemMessage?.message}

@@ -16,7 +16,10 @@ export const translationSchema = z.object({
   model: z.custom<Model>((val) => val instanceof Object, {
     message: "Debes seleccionar un modelo"
   }),
-  systemMessage: z.string().default("Convertí el mensaje en un mensaje corporativo y políticamente correcto.")
+  systemMessage: z.string()
+    .default("Convertí el mensaje en un mensaje corporativo y políticamente correcto.")
+    .optional()
+    .transform(val => val || "Convertí el mensaje en un mensaje corporativo y políticamente correcto.")
 });
 
 export type TranslationFormData = z.infer<typeof translationSchema>; 

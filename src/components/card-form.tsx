@@ -30,6 +30,7 @@ export default function CardForm() {
             apiKey: "",
             systemMessage: "Convertí el mensaje en un mensaje corporativo y políticamente correcto."
         },
+        mode: "onChange"
     });
 
     const apiKey = watch("apiKey");
@@ -65,7 +66,8 @@ export default function CardForm() {
                     errors={{
                         temperature: errors.temperature,
                         topP: errors.topP,
-                        apiKey: errors.apiKey
+                        apiKey: errors.apiKey,
+                        systemMessage: errors.systemMessage
                     }}
                 />
                 <Suspense fallback={<div>Cargando modelos...</div>}>
