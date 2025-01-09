@@ -39,14 +39,18 @@ export default function Home() {
           </Button>
 
           <Accordion 
-            variant="shadow"
-            className="text-white"
+          variant="bordered"
           >
             <AccordionItem 
               key="1" 
               aria-label="Configuración avanzada" 
               title="Configuración avanzada"
-              className="bg-gray-800/50 border border-gray-700/50 group-data-[hover=true]:border-gray-600"
+              className="bg-transparent border border-none"
+              classNames={{
+                title: "text-gray-200",
+                trigger: "px-4 py-2 data-[hover=true]:bg-gray-700/50",
+                content: "text-gray-300"
+              }}
             >
               <div className="flex flex-col gap-6 px-2">
                 <div>
