@@ -1,3 +1,5 @@
+"use client";
+
 import { Card } from "@nextui-org/card";
 import { useState } from "react";
 import { Header } from "@/components/header";
@@ -18,7 +20,7 @@ export default function CardForm() {
     const handleTopPChange = (value: number | number[]): void => {
         setTopP(value as number);
     };
-    
+
     return (
         <Card className="p-6 w-[400px] bg-gray-900/60 border border-gray-800">
             <Header />
