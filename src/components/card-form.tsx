@@ -72,9 +72,9 @@ export default function CardForm() {
     };
 
     return (
-        <Card className="p-6 w-[400px] bg-gray-900/60 border border-gray-800">
+        <Card className="p-4 w-full max-w-[95%] mx-auto bg-gray-900/60 border border-gray-800 sm:max-w-[400px]">
             <Header />
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
                 <MessageInput control={control} error={errors.message} />
                 <TranslationOutput 
                     content={translation}
@@ -91,7 +91,7 @@ export default function CardForm() {
                         systemMessage: errors.systemMessage
                     }}
                 />
-                <Suspense fallback={<div>Cargando modelos...</div>}>
+                <Suspense fallback={<div className="text-center text-sm text-gray-400">Cargando modelos...</div>}>
                     {apiKey && models.length > 0 && (
                         <ModelSelector 
                             control={control}

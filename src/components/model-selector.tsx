@@ -24,7 +24,7 @@ export function ModelSelector({ control, error, models }: ModelSelectorProps) {
                     }}
                     label="Modelo"
                     placeholder="Selecciona un modelo"
-                    className="max-w-md"
+                    className="w-full"
                     isInvalid={!!error}
                     errorMessage={error?.message}
                     classNames={{

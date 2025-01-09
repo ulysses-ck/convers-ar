@@ -16,7 +16,7 @@ interface AdvancedSettingsProps {
 
 export function AdvancedSettings({ control, errors }: AdvancedSettingsProps) {
     return (
-        <Accordion variant="bordered">
+        <Accordion variant="bordered" className="w-full">
             <AccordionItem
                 key="1"
                 aria-label="Configuración avanzada"
@@ -24,11 +24,11 @@ export function AdvancedSettings({ control, errors }: AdvancedSettingsProps) {
                 className="bg-transparent border border-none"
                 classNames={{
                     title: "text-gray-200",
-                    trigger: "px-4 py-2 data-[hover=true]:bg-gray-700/50",
+                    trigger: "px-2 py-2 data-[hover=true]:bg-gray-700/50",
                     content: "text-gray-300"
                 }}
             >
-                <div className="flex flex-col gap-6 px-2">
+                <div className="flex flex-col gap-4">
                     <Controller
                         name="systemMessage"
                         control={control}
@@ -40,7 +40,7 @@ export function AdvancedSettings({ control, errors }: AdvancedSettingsProps) {
                                 type="text"
                                 label="Mensaje del sistema"
                                 placeholder="Convertí el mensaje en un mensaje corporativo y políticamente correcto."
-                                className="max-w-md"
+                                className="w-full"
                                 isInvalid={!!errors.systemMessage}
                                 errorMessage={errors.systemMessage?.message}
                                 classNames={{
@@ -61,7 +61,7 @@ export function AdvancedSettings({ control, errors }: AdvancedSettingsProps) {
                                 type="password"
                                 label="API Key de Gemini"
                                 placeholder="Ingresa tu API key"
-                                className="max-w-md"
+                                className="w-full"
                                 isInvalid={!!errors.apiKey}
                                 errorMessage={errors.apiKey?.message}
                                 classNames={{
@@ -86,7 +86,7 @@ export function AdvancedSettings({ control, errors }: AdvancedSettingsProps) {
                                     minValue={0}
                                     value={value}
                                     onChange={onChange}
-                                    className="max-w-md"
+                                    className="w-full"
                                     classNames={{
                                         track: "bg-gray-700",
                                         filler: "bg-blue-500",
@@ -114,7 +114,7 @@ export function AdvancedSettings({ control, errors }: AdvancedSettingsProps) {
                                     minValue={0}
                                     value={value}
                                     onChange={onChange}
-                                    className="max-w-md"
+                                    className="w-full"
                                     classNames={{
                                         track: "bg-gray-700",
                                         filler: "bg-blue-500",
