@@ -20,6 +20,7 @@
     "@nextui-org/card": "^2.2.9",
     "@nextui-org/input": "^2.4.8",
     "@nextui-org/react": "^2.6.11",
+    "@nextui-org/select": "^2.4.9",
     "@nextui-org/slider": "^2.4.7",
     "framer-motion": "^11.16.4",
     "next": "15.1.3",

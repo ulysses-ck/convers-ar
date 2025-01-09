@@ -29,6 +29,9 @@ importers:
       '@nextui-org/react':
         specifier: ^2.6.11
         version: 2.6.11(@types/react@19.0.4)(framer-motion@11.16.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(tailwindcss@3.4.17(ts-node@10.9.1(@types/node@20.17.12)(typescript@5.7.3)))
+      '@nextui-org/select':
+        specifier: ^2.4.9
+        version: 2.4.9(@nextui-org/system@2.4.6(@nextui-org/theme@2.4.5(tailwindcss@3.4.17(ts-node@10.9.1(@types/node@20.17.12)(typescript@5.7.3))))(framer-motion@11.16.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(@nextui-org/theme@2.4.5(tailwindcss@3.4.17(ts-node@10.9.1(@types/node@20.17.12)(typescript@5.7.3))))(framer-motion@11.16.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@nextui-org/slider':
         specifier: ^2.4.7
         version: 2.4.7(@nextui-org/system@2.4.6(@nextui-org/theme@2.4.5(tailwindcss@3.4.17(ts-node@10.9.1(@types/node@20.17.12)(typescript@5.7.3))))(framer-motion@11.16.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(@nextui-org/theme@2.4.5(tailwindcss@3.4.17(ts-node@10.9.1(@types/node@20.17.12)(typescript@5.7.3))))(framer-motion@11.16.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
