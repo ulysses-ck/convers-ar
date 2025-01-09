@@ -13,6 +13,7 @@
     "cf-typegen": "wrangler types --env-interface CloudflareEnv env.d.ts"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.21.0",
     "@hookform/resolvers": "^3.10.0",
     "@nextui-org/accordion": "^2.2.7",
     "@nextui-org/button": "^2.2.9",
