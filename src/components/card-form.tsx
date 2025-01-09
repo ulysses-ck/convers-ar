@@ -21,6 +21,7 @@ export default function CardForm() {
             message: "",
             temperature: 0.7,
             topP: 0.9,
+            apiKey: ""
         },
     });
 

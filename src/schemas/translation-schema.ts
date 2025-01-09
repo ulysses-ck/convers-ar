@@ -10,6 +10,8 @@ export const translationSchema = z.object({
   topP: z.number()
     .min(0, "El valor mínimo de Top P es 0")
     .max(1, "El valor máximo de Top P es 1"),
+  apiKey: z.string()
+    .min(1, "La API key es requerida")
 });
 
 export type TranslationFormData = z.infer<typeof translationSchema>; 

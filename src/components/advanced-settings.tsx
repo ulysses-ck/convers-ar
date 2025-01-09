@@ -1,6 +1,7 @@
 import { Control, Controller, FieldError } from "react-hook-form";
 import { Slider } from "@nextui-org/slider";
 import { Accordion, AccordionItem } from "@nextui-org/accordion";
+import { Input } from "@nextui-org/input";
 import { TranslationFormData } from "@/schemas/translation-schema";
 
 interface AdvancedSettingsProps {
@@ -8,6 +9,7 @@ interface AdvancedSettingsProps {
     errors: {
         temperature?: FieldError;
         topP?: FieldError;
+        apiKey?: FieldError;
     };
 }
 
@@ -26,6 +28,27 @@ export function AdvancedSettings({ control, errors }: AdvancedSettingsProps) {
                 }}
             >
                 <div className="flex flex-col gap-6 px-2">
+                    <Controller
+                        name="apiKey"
+                        control={control}
+                        render={({ field }) => (
+                            <Input
+                                {...field}
+                                type="password"
+                                label="API Key de Gemini"
+                                placeholder="Ingresa tu API key"
+                                className="max-w-md"
+                                isInvalid={!!errors.apiKey}
+                                errorMessage={errors.apiKey?.message}
+                                classNames={{
+                                    label: "text-gray-300",
+                                    input: "bg-gray-800/50 text-white",
+                                    inputWrapper: "border border-gray-700/50 hover:border-blue-500/50"
+                                }}
+                            />
+                        )}
+                    />
+
                     <Controller
                         name="temperature"
                         control={control}
