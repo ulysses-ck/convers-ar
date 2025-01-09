@@ -5,11 +5,11 @@ import { TranslationFormData } from "@/schemas/translation-schema";
 
 export async function generateTranslation(data: TranslationFormData) {
   try {
-    const model = createGeminiModel(data.apiKey, data.model!);
+    const model = createGeminiModel(data.apiKey, data.model, undefined, data.temperature, data.topP);
     const result = await generateContent(
       model,
       data.message,
-      data.systemMessage
+      data.systemMessage,
     );
 
     const response = result.response;

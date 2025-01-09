@@ -1,5 +1,4 @@
 import { z } from "zod";
-import { Model } from "@/types/gemini";
 
 export const translationSchema = z.object({
   message: z.string()
@@ -13,9 +12,9 @@ export const translationSchema = z.object({
     .max(1, "El valor máximo de Top P es 1"),
   apiKey: z.string()
     .min(1, "La API key es requerida"),
-  model: z.custom<Model>((val) => val instanceof Object, {
-    message: "Debes seleccionar un modelo"
-  }),
+  model: z.string({
+    required_error: "Debes seleccionar un modelo"
+  }).min(1, "Debes seleccionar un modelo"),
   systemMessage: z.string()
     .default("Convertí el mensaje en un mensaje corporativo y políticamente correcto.")
     .optional()

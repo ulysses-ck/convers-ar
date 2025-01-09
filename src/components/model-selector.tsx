@@ -17,6 +17,11 @@ export function ModelSelector({ control, error, models }: ModelSelectorProps) {
             render={({ field }) => (
                 <Select
                     {...field}
+                    selectedKeys={field.value ? [field.value] : []}
+                    onSelectionChange={(keys) => {
+                        const modelName = Array.from(keys)[0]?.toString();
+                        field.onChange(modelName);
+                    }}
                     label="Modelo"
                     placeholder="Selecciona un modelo"
                     className="max-w-md"
@@ -29,7 +34,7 @@ export function ModelSelector({ control, error, models }: ModelSelectorProps) {
                     }}
                 >
                     {models.map((model) => (
-                        <SelectItem key={model.name} value={model}>
+                        <SelectItem key={model.name} value={model.name}>
                             {model.name}
                         </SelectItem>
                     ))}

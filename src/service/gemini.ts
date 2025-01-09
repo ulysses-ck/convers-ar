@@ -20,8 +20,11 @@ export async function listModels(apiKey: string): Promise<Model[]> {
 
 export function createGeminiModel(
   apiKey: string,
-  model: Model,
-  responseSchema?: ResponseSchema
+  modelName: string,
+  responseSchema?: ResponseSchema,
+  temperature?: number,
+  topP?: number,
+  maxOutputTokens?: number
 ) {
   const genAI = new GoogleGenerativeAI(apiKey);
 
@@ -35,11 +38,11 @@ export function createGeminiModel(
       : {};
 
   const modelParams: ModelParams = {
-    model: model.name,
+    model: modelName,
     generationConfig: {
-      temperature: model.temperature,
-      topP: model.topP,
-      maxOutputTokens: model.outputTokenLimit,
+      temperature,
+      topP,
+      maxOutputTokens,
       ...responseSchemaObj,
     },
   };
@@ -51,25 +54,17 @@ export function createGeminiModel(
 export async function generateContent(
   model: GenerativeModel,
   prompt: string,
-  systemMessage: string
+  systemMessage: string,
 ) {
   const result = await model.generateContent({
     contents: [
       {
         role: "system",
-        parts: [
-          {
-            text: systemMessage,
-          },
-        ],
+        parts: [{ text: systemMessage }],
       },
       {
         role: "user",
-        parts: [
-          {
-            text: prompt,
-          },
-        ],
+        parts: [{ text: prompt }],
       },
     ],
   });
