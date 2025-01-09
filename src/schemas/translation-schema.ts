@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { Model } from "@/types/gemini";
 
 export const translationSchema = z.object({
   message: z.string()
@@ -11,7 +12,10 @@ export const translationSchema = z.object({
     .min(0, "El valor mínimo de Top P es 0")
     .max(1, "El valor máximo de Top P es 1"),
   apiKey: z.string()
-    .min(1, "La API key es requerida")
+    .min(1, "La API key es requerida"),
+  model: z.custom<Model>((val) => val instanceof Object, {
+    message: "Debes seleccionar un modelo"
+  })
 });
 
 export type TranslationFormData = z.infer<typeof translationSchema>; 
