@@ -10,6 +10,7 @@ interface AdvancedSettingsProps {
         temperature?: FieldError;
         topP?: FieldError;
         apiKey?: FieldError;
+        systemMessage?: FieldError;
     };
 }
 
@@ -28,6 +29,27 @@ export function AdvancedSettings({ control, errors }: AdvancedSettingsProps) {
                 }}
             >
                 <div className="flex flex-col gap-6 px-2">
+                    <Controller
+                        name="systemMessage"
+                        control={control}
+                        render={({ field }) => (
+                            <Input
+                                {...field}
+                                type="text"
+                                label="Mensaje del sistema"
+                                placeholder="Ingresa el mensaje del sistema"
+                                className="max-w-md"
+                                isInvalid={!!errors.systemMessage}
+                                errorMessage={errors.systemMessage?.message}
+                                classNames={{
+                                    label: "text-gray-300",
+                                    input: "bg-gray-800/50 text-white",
+                                    inputWrapper: "border border-gray-700/50 hover:border-blue-500/50"
+                                }}
+                            />
+                        )}
+                    />
+
                     <Controller
                         name="apiKey"
                         control={control}

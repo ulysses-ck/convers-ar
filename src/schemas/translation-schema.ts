@@ -15,7 +15,8 @@ export const translationSchema = z.object({
     .min(1, "La API key es requerida"),
   model: z.custom<Model>((val) => val instanceof Object, {
     message: "Debes seleccionar un modelo"
-  })
+  }),
+  systemMessage: z.string().default("Convertí el mensaje en un mensaje corporativo y políticamente correcto.")
 });
 
 export type TranslationFormData = z.infer<typeof translationSchema>; 

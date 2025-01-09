@@ -48,18 +48,21 @@ export function createGeminiModel(
   return modelResult;
 }
 
-export async function generateContent(model: GenerativeModel, prompt: string) {
+export async function generateContent(
+  model: GenerativeModel,
+  prompt: string,
+  systemMessage: string
+) {
   const result = await model.generateContent({
     contents: [
       {
         role: "system",
         parts: [
           {
-            text: "Convertí el mensaje en un mensaje corporativo y políticamente correcto.",
+            text: systemMessage,
           },
         ],
       },
-
       {
         role: "user",
         parts: [
