@@ -13,9 +13,13 @@ import { translationSchema, TranslationFormData } from "@/schemas/translation-sc
 import { Suspense, useEffect, useState } from "react";
 import { Model } from "@/types/gemini";
 import { listModels } from "@/service/gemini";
+import { generateTranslation } from "@/server/actions/generate-content";
 
 export default function CardForm() {
     const [models, setModels] = useState<Model[]>([]);
+    const [translation, setTranslation] = useState<string>("");
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
     const {
         handleSubmit,
         control,
@@ -51,7 +55,20 @@ export default function CardForm() {
     }, [apiKey]);
 
     const onSubmit = async (data: TranslationFormData) => {
-        console.log(data);
+        setIsLoading(true);
+        setError(null);
+        try {
+            const result = await generateTranslation(data);
+            if (result.success) {
+                setTranslation(result.content || '');
+            } else {
+                setError(result.error || null);
+            }
+        } catch (err) {
+            setError(err instanceof Error ? err.message : 'Error desconocido');
+        } finally {
+            setIsLoading(false);
+        }
     };
 
     return (
@@ -59,8 +76,12 @@ export default function CardForm() {
             <Header />
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
                 <MessageInput control={control} error={errors.message} />
-                <TranslationOutput />
-                <TranslateButton />
+                <TranslationOutput 
+                    content={translation}
+                    isLoading={isLoading}
+                    error={error}
+                />
+                <TranslateButton isLoading={isLoading} />
                 <AdvancedSettings
                     control={control}
                     errors={{

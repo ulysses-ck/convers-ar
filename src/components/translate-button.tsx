@@ -1,12 +1,18 @@
 import { Button } from "@nextui-org/button";
 
-export function TranslateButton() {
-  return (
-    <Button 
-      color="primary"
-      className="w-full bg-blue-600 hover:bg-blue-700"
-    >
-      Traducir
-    </Button>
-  );
+interface TranslateButtonProps {
+    isLoading?: boolean;
+}
+
+export function TranslateButton({ isLoading }: TranslateButtonProps) {
+    return (
+        <Button 
+            type="submit"
+            color="primary"
+            className="w-full"
+            isLoading={isLoading}
+        >
+            {isLoading ? 'Traduciendo...' : 'Traducir'}
+        </Button>
+    );
 } 
