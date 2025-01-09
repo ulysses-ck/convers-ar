@@ -59,7 +59,7 @@ export async function generateContent(
   const result = await model.generateContent({
     contents: [
       {
-        role: "system",
+        role: "user",
         parts: [{ text: systemMessage }],
       },
       {
