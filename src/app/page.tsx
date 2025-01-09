@@ -5,8 +5,20 @@ import {Input} from "@nextui-org/input";
 import {Card} from "@nextui-org/card";
 import {Accordion, AccordionItem} from "@nextui-org/accordion";
 import {Slider} from "@nextui-org/slider";
+import {useState} from "react";
 
 export default function Home() {
+  const [temperature, setTemperature] = useState(0.7);
+  const [topP, setTopP] = useState(0.9);
+
+  const handleTemperatureChange = (value: number | number[]): void => {
+    setTemperature(value as number);
+  };
+
+  const handleTopPChange = (value: number | number[]): void => {
+    setTopP(value as number);
+  };
+
   return (
     <main className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-b from-gray-900 to-black">
       <Card className="p-6 w-[400px] bg-gray-900/60 border border-gray-800">
@@ -54,13 +66,15 @@ export default function Home() {
             >
               <div className="flex flex-col gap-6 px-2">
                 <div>
-                  <p className="text-sm text-gray-300 mb-2">Temperatura</p>
+                  <p className="text-sm text-gray-300 mb-2">Temperatura: {temperature}</p>
                   <Slider 
                     size="sm"
                     step={0.1}
                     maxValue={1} 
                     minValue={0}
                     defaultValue={0.7}
+                    value={temperature}
+                    onChange={handleTemperatureChange}
                     className="max-w-md"
                     classNames={{
                       track: "bg-gray-700",
@@ -72,13 +86,15 @@ export default function Home() {
                 </div>
 
                 <div>
-                  <p className="text-sm text-gray-300 mb-2">Top P</p>
+                  <p className="text-sm text-gray-300 mb-2">Top P: {topP}</p>
                   <Slider
                     size="sm"
                     step={0.1}
                     maxValue={1}
                     minValue={0}
                     defaultValue={0.9}
+                    value={topP}
+                    onChange={handleTopPChange}
                     className="max-w-md"
                     classNames={{
                       track: "bg-gray-700",
